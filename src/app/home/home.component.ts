@@ -86,17 +86,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     $('body').css("background-color", "#f7f7f7");
-    $(document).ready(function () {
-      $("#sidebar").mCustomScrollbar({
-        theme: "minimal"
-      });
-
-      $('#sidebarbtn').on('click', function () {
-        $('#sidebar, #content').toggleClass('active');
-        $('.collapse.in').toggleClass('in');
-        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-      });
+    // $(document).ready(function () {
+    $("#sidebar").mCustomScrollbar({
+      theme: "minimal"
     });
+
+    $('#sidebarbtn').on('click', function () {
+      $('#sidebar, #content').toggleClass('active');
+      $('.collapse.in').toggleClass('in');
+      $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+    // });
   }
 
   changeMode(mode) {

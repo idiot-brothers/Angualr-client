@@ -41,11 +41,10 @@ export class CardComponent implements OnInit {
       headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`),
     })
       .subscribe(ret => {
-        console.log("성공!!! >_<");
-        // $("#centralModalSuccess").modal('toggle').on('hidden.bs.modal', (e) => {
-
-        //   this.router.navigate(['/card']);
-        // });
+        console.log("성공!!! >_<", ret);
+        $("#centralModalSuccess").modal('toggle').on('hidden.bs.modal', (e) => {
+          this.router.navigate(['/home']);
+        });
       });
 
     console.log('param', param);
