@@ -232,3 +232,8 @@ a.article:hover {
   left: 15px;
   z-index: 1051;
 }
+
+.point {
+  font-size: 17px;
+  color: rgb(51, 48, 231);
+}
