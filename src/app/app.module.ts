@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -64,6 +66,8 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
       }
     }),
+    FormsModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     BrowserModule,

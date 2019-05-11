@@ -28,12 +28,12 @@
 
     <div>
 
-      <form class="p-3">
+      <form class="p-3 form-group" [formGroup]="createForm" (ngSubmit)="login()">
 
         <div class="form-row">
           <div class="col">
             <div class="md-form mt-0">
-              <input type="text" class="form-control" placeholder="ID">
+              <input type="text" class="form-control" formControlName="userId" placeholder="userId">
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-row">
           <div class="col">
             <div class="md-form mt-0">
-              <input type="text" class="form-control" placeholder="Password">
+              <input type="text" class="form-control" formControlName="userPwd" placeholder="Password">
             </div>
           </div>
         </div>
@@ -63,6 +63,8 @@
     </div>
   </div>
 
+  <!-- !!!!!!!!register!!!!!!!!! -->
+  <!-- !!!!!!!!register!!!!!!!!! -->
   <div class="register mt-5" *ngIf="authForm =='register'">
 
     <p class="text-success" style="font-size: 26px;">
@@ -70,12 +72,12 @@
         Welcome to CADIT service!
       </strong>
     </p>
-    <form class="p-3">
+    <form class="p-3" [formGroup]="createForm" (ngSubmit)="register()" class="form-group">
 
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="Name">
+            <input type="text" class="form-control" formControlName="userId" placeholder="Name">
           </div>
         </div>
       </div>
@@ -83,7 +85,7 @@
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" formControlName="userEmail" placeholder="Email">
           </div>
         </div>
       </div>
@@ -91,7 +93,7 @@
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" formControlName="userPwd" placeholder="Password">
           </div>
         </div>
       </div>
@@ -99,18 +101,18 @@
       <div class="form-row">
         <div class="col-9">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="PhoneNumber">
+            <input type="text" class="form-control" formControlName="userPhone" placeholder="PhoneNumber">
           </div>
         </div>
         <div class="col-3">
-          <button type="button" class="btn btn-success">SEND</button>
+          <button type="button" class="btn btn-success" (click)="sendCode()">SEND</button>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="Certification Number">
+            <input type="text" class="form-control" formControlName="userCode" placeholder="Certification Number">
           </div>
         </div>
       </div>
@@ -118,10 +120,33 @@
       <button type="submit" class="btn btn-primary w-100 mt-5" style="height: 45px">CONTINUE</button>
 
     </form>
-
-
   </div>
-
-
-
 </div>
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success modal-dialog-centered" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Register Success</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p>Welcome to CADIT service !!</p>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
-
+import { Router } from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     $('body').css("background-color", "#f7f7f7");
@@ -122,8 +122,11 @@ export class HomeComponent implements OnInit {
         { data: [380, 400, 300, 390, 1625], label: 'use' },
       ];
     }
+  }
 
-
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth']);
   }
 
   // events
