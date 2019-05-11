@@ -1,3 +1,188 @@
-<p>
-  home works!
-</p>
+<div class="wrapper">
+
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Bootstrap Sidebar</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+      <p>Dummy Heading</p>
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a href="#">Home 1</a>
+          </li>
+          <li>
+            <a href="#">Home 2</a>
+          </li>
+          <li>
+            <a href="#">Home 3</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li>
+            <a href="#">Page 1</a>
+          </li>
+          <li>
+            <a href="#">Page 2</a>
+          </li>
+          <li>
+            <a href="#">Page 3</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Portfolio</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+      <li>
+        <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+      </li>
+      <li>
+        <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div id="content" class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+      <div class="container">
+
+        <button class="navbar-toggler" id="sidebarbtn" type="button" data-toggle="collapse"
+          data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="mt-5">
+          <span style="font-size:50px;">
+            <strong>
+              statistics
+            </strong>
+          </span>
+
+        </div>
+      </div>
+    </nav>
+
+    <div class="btn-group btn-group-justified w-100 mb-4">
+      <button (click)="changeMode('today')" class="btn btn-secondary">TODAY</button>
+      <button (click)="changeMode('week')" class="btn btn-secondary">WEEK</button>
+      <button (click)="changeMode('month')" class="btn btn-secondary">MONTH</button>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="card-title">
+          <div class="text-left" style="font-size:50px; color: black;">
+            <strong *ngIf="isMode == 'today'">
+              $165
+            </strong>
+            <strong *ngIf="isMode == 'week'">
+              $465
+            </strong>
+            <strong *ngIf="isMode == 'month'">
+              $1625
+            </strong>
+            <span class="text-left lead" style="font-size:25px; color: gray;">
+              USD
+            </span>
+          </div>
+
+        </div>
+
+
+        <div>
+          <div>
+            <div style="display: block">
+              <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body" *ngFor="let data of todayAM">
+        <div class="card-title">
+          <div class="row" style="font-size:20px; color: black;">
+            <div class="col-9">
+              <strong class="text-left">
+                {{data.name}}
+              </strong>
+            </div>
+            <div class="col-3">
+              <div class="text-right" style="font-size:25px; color: blue;">
+                ${{data.point}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="font-size:20px; color: grey;">
+            <div class="col">
+              {{data.time}} AM
+            </div>
+          </div>
+
+          <div class="row" style="font-size:20px; color: grey;">
+            <div class="col">
+              Approved amount: ${{data.amount}} ({{data.persent}}%)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body" *ngFor="let data of todayPM">
+        <div class="card-title">
+          <div class="row" style="font-size:20px; color: black;">
+            <div class="col-9">
+              <strong class="text-left">
+                {{data.name}}
+              </strong>
+            </div>
+            <div class="col-3">
+              <div class="text-right" style="font-size:25px; color: blue;">
+                ${{data.point}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="font-size:20px; color: grey;">
+            <div class="col">
+              {{data.time}} AM
+            </div>
+          </div>
+
+          <div class="row" style="font-size:20px; color: grey;">
+            <div class="col">
+              Approved amount: ${{data.amount}} ({{data.persent}}%)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-lg btn-block mt-3 mb-3">Block level button</button>
+
+  </div>
+
+
+</div>

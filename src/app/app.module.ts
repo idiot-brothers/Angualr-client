@@ -8,9 +8,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './guards/auth.guard';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component'
-
+import { ChartsModule } from 'ng2-charts';
 const appRoutes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,8 +37,6 @@ export function tokenGetter() {
     AppComponent,
     AuthComponent,
     HomeComponent,
-    RegisterComponent,
-    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -52,7 +48,8 @@ export function tokenGetter() {
       }
     }),
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
