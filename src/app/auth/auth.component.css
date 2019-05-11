@@ -1,1 +1,52 @@
+.login-root {
+    /* height: 100vh; */
+    background: #2a2e43;
+}
 
+.logo {
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-text {
+    color: white;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.custom-input {
+    padding: 0.3rem 0 0.55rem 0;
+    background: #454f63;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    height: 46px;
+    padding-left: 30px;
+    padding-top: 9px;
+}
+
+.custom-button {
+    background: #665eff;
+    height: 45px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+}
+
+.custom-badge {
+    background: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    height: 40px;
+    width: 90px;
+}
+
+.active {
+    background: #5773ff;
+}
