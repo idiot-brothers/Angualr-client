@@ -1,0 +1,74 @@
+<div class="wrapper">
+
+  <div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
+      <div class="container">
+
+        <button class="navbar-toggler" id="sidebarbtn" type="button" [routerLink]="['/home']">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <div class="mt-5">
+          <span style="font-size:45px;">
+            <strong>
+              Bank Account
+            </strong>
+          </span>
+
+        </div>
+      </div>
+    </nav>
+
+    <form class="p-3">
+      <div class="form-group mt-5">
+        <select class="browser-default custom-select">
+          <option selected>Bank</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <div class="md-form mt-0">
+            <input type="text" class="form-control" placeholder="Full Name">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <div class="md-form mt-0">
+            <input type="text" class="form-control" placeholder="Bank Account Number">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <div class="md-form mt-0">
+            <input type="text" class="form-control" placeholder="YY/DD/MM">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="md-form mt-0">
+            <input type="password" class="form-control" placeholder="Password">
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row p-2">
+      <div class="col-6 text-left">
+        <button [routerLink]="['/home']" type="button" class="btn btn-blue-grey w-100">CANCLE</button>
+      </div>
+      <div class="col-6 text-right">
+        <button [routerLink]="['/card']" type="button" class="btn btn-cyan w-100">APPLY</button>
+      </div>
+    </div>
+
+  </div>
+</div>

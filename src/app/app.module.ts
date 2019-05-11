@@ -9,10 +9,22 @@ import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { ChartsModule } from 'ng2-charts';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { GoalComponent } from './goal/goal.component';
+
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PdfComponent } from './pdf/pdf.component';
+import { BankComponent } from './bank/bank.component';
+import { CardComponent } from './card/card.component';
 const appRoutes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'withdraw', component: WithdrawComponent, canActivate: [AuthGuard] },
+  { path: 'goal', component: GoalComponent, canActivate: [AuthGuard] },
+  { path: 'pdf', component: PdfComponent, canActivate: [AuthGuard] },
+  { path: 'bank', component: BankComponent, canActivate: [AuthGuard] },
+  { path: 'card', component: CardComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
@@ -37,6 +49,11 @@ export function tokenGetter() {
     AppComponent,
     AuthComponent,
     HomeComponent,
+    WithdrawComponent,
+    GoalComponent,
+    PdfComponent,
+    BankComponent,
+    CardComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -47,6 +64,7 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
       }
     }),
+    MDBBootstrapModule.forRoot(),
     HttpClientModule,
     BrowserModule,
     ChartsModule
