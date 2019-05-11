@@ -64,13 +64,13 @@
         <div class="card-title">
           <div class="text-left" style="font-size:50px; color: black;">
             <strong *ngIf="isMode == 'today'">
-              $165
+              ${{this.moneyService.today}}
             </strong>
             <strong *ngIf="isMode == 'week'">
-              $465
+              ${{this.moneyService.week}}
             </strong>
             <strong *ngIf="isMode == 'month'">
-              $1625
+              ${{this.moneyService.month}}
             </strong>
             <span class="text-left lead" style="font-size:25px; color: gray;">
               USD
@@ -102,7 +102,7 @@
               </strong>
             </div>
             <div class="col-3">
-              <div class="text-right" style="font-size:25px; color: blue;">
+              <div class="text-right point">
                 ${{data.point}}
               </div>
             </div>
@@ -126,14 +126,14 @@
     <div class="card mb-4">
       <div class="card-body" *ngFor="let data of todayPM">
         <div class="card-title">
-          <div class="row" style="font-size:20px; color: black;">
+          <div class="row">
             <div class="col-9">
               <strong class="text-left">
                 {{data.name}}
               </strong>
             </div>
             <div class="col-3">
-              <div class="text-right" style="font-size:25px; color: blue;">
+              <div class="text-right point">
                 ${{data.point}}
               </div>
             </div>

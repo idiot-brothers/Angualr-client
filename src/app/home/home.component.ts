@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Router } from '@angular/router';
+import { MoneyService } from '../services/money.service'
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -81,11 +82,10 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private moneyService: MoneyService) { }
 
   ngOnInit() {
     $('body').css("background-color", "#f7f7f7");
-
     $(document).ready(function () {
       $("#sidebar").mCustomScrollbar({
         theme: "minimal"
