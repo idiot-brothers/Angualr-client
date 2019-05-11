@@ -15,6 +15,11 @@ export class AuthComponent implements OnInit {
   createForm: FormGroup;
   bodyColor;
 
+  modal = {
+    title: "",
+    body: ""
+  }
+
   readonly loginCondition = {
     userId: ['', []],
     userPwd: ['', []],
@@ -74,6 +79,7 @@ export class AuthComponent implements OnInit {
 
     this.http.post(`${environment.server.url}/api/auth/register`, param)
       .subscribe(ret => {
+        this.modal.title = "Register Success";
         $("#centralModalSuccess").modal('toggle').on('hidden.bs.modal', (e) => {
           this.authForm = "login";
 
@@ -97,6 +103,7 @@ export class AuthComponent implements OnInit {
     this.http.post(`${environment.server.url}/api/auth/login`, param)
       .subscribe((ret: any) => {
         localStorage.setItem("token", ret.token);
+        this.modal.title = "Login Success";
         $("#centralModalSuccess").modal('toggle').on('hidden.bs.modal', (e) => {
           this.router.navigate(['/home']);
         });

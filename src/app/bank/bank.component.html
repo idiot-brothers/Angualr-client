@@ -20,20 +20,30 @@
       </div>
     </nav>
 
-    <form class="p-3">
-      <div class="form-group mt-5">
-        <select class="browser-default custom-select">
-          <option selected>Bank</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+    <form class="p-3" [formGroup]="createForm" (ngSubmit)="setBank()">
+      <div class="form-group mt-2">
+        <select class="browser-default custom-select" formControlName="bankName">
+          <option selected>select...</option>
+          <option value="국민은행">국민은행</option>
+          <option value="IBK 기업은행">IBK 기업은행</option>
+          <option value="우리은행">우리은행</option>
+          <option value="우체국">우체국</option>
+          <option value="한국은행">한국은행</option>
+        </select>
+      </div>
+
+      <div class="form-group mt-2">
+        <select class="browser-default custom-select" formControlName="userType">
+          <option selected>select...</option>
+          <option value="1">개인</option>
+          <option value="2">법인</option>
         </select>
       </div>
 
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="Full Name">
+            <input type="text" class="form-control" formControlName="userId" placeholder="Name">
           </div>
         </div>
       </div>
@@ -41,7 +51,7 @@
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="Bank Account Number">
+            <input type="text" class="form-control" formControlName="bankNumber" placeholder="Bank Account Number">
           </div>
         </div>
       </div>
@@ -49,26 +59,51 @@
       <div class="form-row">
         <div class="col">
           <div class="md-form mt-0">
-            <input type="text" class="form-control" placeholder="YY/DD/MM">
+            <input type="text" class="form-control" formControlName="userBirth" placeholder="Birth(YYYY/DD/MM)">
           </div>
         </div>
 
         <div class="col">
           <div class="md-form mt-0">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" formControlName="userPwd" placeholder="Password">
           </div>
         </div>
       </div>
+      <div class="row p-2">
+        <div class="col-6 text-left">
+          <button [routerLink]="['/home']" type="button" class="btn btn-blue-grey w-100">CANCLE</button>
+        </div>
+        <div class="col-6 text-right">
+          <button type="submit" class="btn btn-cyan w-100">APPLY</button>
+        </div>
+      </div>
+
     </form>
 
-    <div class="row p-2">
-      <div class="col-6 text-left">
-        <button [routerLink]="['/home']" type="button" class="btn btn-blue-grey w-100">CANCLE</button>
-      </div>
-      <div class="col-6 text-right">
-        <button [routerLink]="['/card']" type="button" class="btn btn-cyan w-100">APPLY</button>
-      </div>
-    </div>
 
+
+  </div>
+</div>
+
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="heading lead">Set Bank Success</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p>So, Now we go to Setting Your Credit Card!</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
