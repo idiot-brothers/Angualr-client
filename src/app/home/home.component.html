@@ -33,30 +33,32 @@
 
   <div id="content" class="">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
+    <nav class="navbar navbar-expand-lg navbar-light text-center" style="background: #2a2e43; color: white">
       <div class="container">
 
         <button class="navbar-toggler" id="sidebarbtn" type="button" data-toggle="collapse"
           data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
           aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <img src="assets/nav-icon.png" style="
+          cursor: pointer;" style="color: white !important;">
         </button>
 
-        <div class="mt-5">
-          <span style="font-size:50px;">
-            <strong>
-              statistics
-            </strong>
+        <div class="mt-5" style="padding-right: 20px">
+          <span style="font-size:40px; font-weight: bold">
+            Statistics
           </span>
 
         </div>
       </div>
     </nav>
 
-    <div class="btn-group btn-group-justified w-100 mb-4">
-      <button (click)="changeMode('today')" class="btn btn-secondary">TODAY</button>
-      <button (click)="changeMode('week')" class="btn btn-secondary">WEEK</button>
-      <button (click)="changeMode('month')" class="btn btn-secondary">MONTH</button>
+    <div class="w-100 mb-3" style="background: white; height: 50px; box-shadow: 0 15px 50px 0 rgba(213,216,228,.3)">
+      <button (click)="changeMode('today')" [class.change-mode-active]="isMode === 'today'" class="change-mode-btn"
+        style="width: 33.4%; height: 100%">TODAY</button>
+      <button (click)="changeMode('week')" [class.change-mode-active]="isMode === 'week'" class="change-mode-btn"
+        style="width: 33.2%; height: 100%;">WEEK</button>
+      <button (click)="changeMode('month')" class="change-mode-btn" [class.change-mode-active]="isMode === 'month'"
+        style="width: 33.4%; height: 100%; ">MONTH</button>
     </div>
 
     <div class="card mb-4">
@@ -72,7 +74,7 @@
             <strong *ngIf="isMode == 'month'">
               ${{this.moneyService.month}}
             </strong>
-            <span class="text-left lead" style="font-size:25px; color: gray;">
+            <span class="text-left lead" style="font-size:25px; color: gray; font-weight: bold">
               USD
             </span>
           </div>
@@ -93,28 +95,28 @@
     </div>
 
     <div class="card mb-4">
-      <div class="card-body" *ngFor="let data of todayAM">
+      <div class="card-body" *ngFor="let data of todayAM" style="border-bottom: 1px solid #f4f4f6;">
         <div class="card-title">
           <div class="row" style="font-size:20px; color: black;">
             <div class="col-9">
-              <strong class="text-left">
+              <strong class="text-left" style="color: #454f63">
                 {{data.name}}
               </strong>
             </div>
             <div class="col-3">
-              <div class="text-right point">
+              <div class="text-right point" style="color: #347b8a; font-weight: bold">
                 ${{data.point}}
               </div>
             </div>
           </div>
 
-          <div class="row" style="font-size:20px; color: grey;">
+          <div class="row" style="font-size:15px; color: #78849e;">
             <div class="col">
               {{data.time}} AM
             </div>
           </div>
 
-          <div class="row" style="font-size:20px; color: grey;">
+          <div class="row" style="font-size:15px; color: #78849e;">
             <div class="col">
               Approved amount: ${{data.amount}} ({{data.persent}}%)
             </div>
@@ -124,28 +126,28 @@
     </div>
 
     <div class="card mb-4">
-      <div class="card-body" *ngFor="let data of todayPM">
+      <div class="card-body" *ngFor="let data of todayPM" style="border-bottom: 1px solid #f4f4f6;">
         <div class="card-title">
-          <div class="row">
+          <div class="row" style="font-size:20px; color: black;">
             <div class="col-9">
-              <strong class="text-left">
+              <strong class="text-left" style="color: #454f63">
                 {{data.name}}
               </strong>
             </div>
             <div class="col-3">
-              <div class="text-right point">
+              <div class="text-right point" style="color: #347b8a; font-weight: bold">
                 ${{data.point}}
               </div>
             </div>
           </div>
 
-          <div class="row" style="font-size:20px; color: grey;">
+          <div class="row" style="font-size:15px; color: #78849e;">
             <div class="col">
               {{data.time}} AM
             </div>
           </div>
 
-          <div class="row" style="font-size:20px; color: grey;">
+          <div class="row" style="font-size:15px; color: #78849e;">
             <div class="col">
               Approved amount: ${{data.amount}} ({{data.persent}}%)
             </div>
@@ -154,10 +156,11 @@
       </div>
     </div>
 
-    <button type="button" [routerLink]="['/withdraw']"
-      class="btn btn-primary btn-lg btn-block mt-3 mb-3">Withdraw</button>
+    <div class="p-2">
+      <button type="submit" [routerLink]="['/withdraw']" class="custom-button"
+        style="background: #3acce1; width: 100%; height: 45px">Withdraw</button>
+    </div>
 
   </div>
-
 
 </div>

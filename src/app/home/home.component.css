@@ -237,3 +237,34 @@ a.article:hover {
   font-size: 17px;
   color: rgb(51, 48, 231);
 }
+
+.change-mode-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #959dad;
+  border-right: 1px solid #f4f4f6;
+}
+
+.change-mode-active {
+  border-bottom: 3px solid #2a2e43;
+  z-index:2;
+  color: #454f63;
+}
+
+.card {
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0 15px 50px 0 rgba(213,216,228,.3);
+  background: white;
+}
+
+.custom-button {
+  background: #665eff;
+  height: 45px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+}
