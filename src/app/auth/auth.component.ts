@@ -83,7 +83,6 @@ export class AuthComponent implements OnInit {
     };
     this.ngxService.start();
     this.http.post(`${environment.server.url}/api/auth/register`, param)
-    this.http.post(`${environment.server.url}/api/auth/login`, param)
       .pipe(
         finalize(() => this.ngxService.stop())
       )
