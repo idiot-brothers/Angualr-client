@@ -85,8 +85,8 @@ export class DepositsComponent implements OnInit {
   constructor(private router: Router, private moneyService: MoneyService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.userName = this.activatedRoute.snapshot.paramMap.get("userId");
-    console.log('userName', this.userName);
+    // this.userName = this.activatedRoute.snapshot.paramMap.get("userId");
+    // console.log('userName', this.userName);
   }
 
 }

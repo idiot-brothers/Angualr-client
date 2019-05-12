@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   { path: 'pdf', component: PdfComponent, canActivate: [AuthGuard] },
   { path: 'bank', component: BankComponent, canActivate: [AuthGuard] },
   { path: 'card', component: CardComponent, canActivate: [AuthGuard] },
-  { path: 'deposits/:userId', component: DepositsComponent, canActivate: [AuthGuard] },
+  { path: 'deposits', component: DepositsComponent },
   { path: 'auth', component: AuthComponent },
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
@@ -70,7 +70,9 @@ export function tokenGetter() {
   ],
   imports: [
     RouterModule.forRoot(
-      appRoutes,
+      appRoutes, {
+        useHash: true
+      }
     ),
     JwtModule.forRoot({
       config: {
