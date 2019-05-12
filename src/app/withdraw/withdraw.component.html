@@ -19,6 +19,26 @@
         </div>
       </div>
     </nav>
+    <div class="card mt-3 mb-5">
+      <div class="card-body">
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" aria-valuemin="0"
+            aria-valuemax="100" aria-valuenow="3.3" style="width : 3.3%;"></div>
+        </div>
+
+        <strong class="ml-3" style="color :black; font-size: 25px;">
+          interest
+        </strong>
+
+        <div class="text-right" style="font-size: 25px;">
+          3.3%
+        </div>
+
+      </div>
+    </div>
+
+
     <!-- 현재 값 x 100 / 목표값 -->
     <div class="card mt-3" *ngFor="let data of goalsObservable$ | async; index as idx">
       <div class="card-body">
@@ -80,3 +100,5 @@
     </div>
   </div>
 </div>
+
+<ngx-ui-loader></ngx-ui-loader>

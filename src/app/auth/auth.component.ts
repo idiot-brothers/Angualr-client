@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { finalize, take, map, tap } from 'rxjs/operators';
+
 import { Router } from '@angular/router';
 declare var $: any;
 @Component({
@@ -32,7 +35,7 @@ export class AuthComponent implements OnInit {
     userCode: ['', []],
   }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.bodyColor = $('body').css("background-color");
@@ -59,8 +62,11 @@ export class AuthComponent implements OnInit {
       email: this.createForm.value.userEmail,
       phone: this.createForm.value.userPhone,
     };
-
+    this.ngxService.start();
     this.http.post(`${environment.server.url}/api/auth/phone`, param)
+      .pipe(
+        finalize(() => this.ngxService.stop())
+      )
       .subscribe(ret => {
         console.log("sendCode()", ret);
         console.log("param ", param);
@@ -76,8 +82,12 @@ export class AuthComponent implements OnInit {
       code: this.createForm.value.userCode,
       password: this.createForm.value.userPwd,
     };
-
+    this.ngxService.start();
     this.http.post(`${environment.server.url}/api/auth/register`, param)
+    this.http.post(`${environment.server.url}/api/auth/login`, param)
+      .pipe(
+        finalize(() => this.ngxService.stop())
+      )
       .subscribe(ret => {
         this.modal.title = "Register Success";
         $("#centralModalSuccess").modal('toggle').on('hidden.bs.modal', (e) => {
@@ -99,8 +109,11 @@ export class AuthComponent implements OnInit {
     };
 
     console.log("param ", param);
-
+    this.ngxService.start();
     this.http.post(`${environment.server.url}/api/auth/login`, param)
+      .pipe(
+        finalize(() => this.ngxService.stop())
+      )
       .subscribe((ret: any) => {
         localStorage.setItem("token", ret.token);
         this.modal.title = "Login Success";

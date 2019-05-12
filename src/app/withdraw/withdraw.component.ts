@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { finalize, take, map, tap } from 'rxjs/operators';
 import { MoneyService } from '../services/money.service'
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 declare var $: any;
 
 @Component({
@@ -17,7 +19,8 @@ export class WithdrawComponent implements OnInit {
 
   goalsObservable$: Observable<any>;
   goalPercent: number = 0;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private moneyService: MoneyService) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private moneyService: MoneyService
+    , private ngxService: NgxUiLoaderService) { }
 
   ngOnInit() {
     $('body').css("background-color", "#f7f7f7");
@@ -26,6 +29,7 @@ export class WithdrawComponent implements OnInit {
   }
 
   getGoals() {
+    this.ngxService.start();
     this.goalsObservable$ = this.http.get(`${environment.server.url}/api/users/goals`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`),
     })
@@ -41,6 +45,8 @@ export class WithdrawComponent implements OnInit {
           // console.log('goal :', d.goal_price * 100 / this.moneyService.week);
           return data;
         }),
+        finalize(() => this.ngxService.stop()),
+
         tap(data => console.log('[orderer-list.componenet] #queryOrdererServer - data:', data)),
       )
   }

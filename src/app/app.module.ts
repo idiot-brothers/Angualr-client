@@ -18,6 +18,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PdfComponent } from './pdf/pdf.component';
 import { BankComponent } from './bank/bank.component';
 import { CardComponent } from './card/card.component';
+
+import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER } from 'ngx-ui-loader';
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  fgsType: SPINNER.fadingCircle,
+  fgsColor: "#fff",
+  hasProgressBar: false
+};
 const appRoutes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -69,6 +76,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     HttpClientModule,
     BrowserModule,
     ChartsModule

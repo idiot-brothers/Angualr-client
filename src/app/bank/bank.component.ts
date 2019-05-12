@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { finalize, take, map, tap } from 'rxjs/operators';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 declare var $: any;
 
 @Component({
@@ -13,7 +15,7 @@ declare var $: any;
 export class BankComponent implements OnInit {
   createForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit() {
     this.createForm = this.formBuilder.group({
@@ -36,10 +38,13 @@ export class BankComponent implements OnInit {
       bank_account_number: this.createForm.value.bankNumber,
       bank_account_password: parseInt(this.createForm.value.userPwd, 10),
     };
-
+    this.ngxService.start();
     this.http.post(`${environment.server.url}/api/users/bank`, param, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`),
     })
+      .pipe(
+        finalize(() => this.ngxService.stop())
+      )
       .subscribe(ret => {
         $("#centralModalSuccess").modal('toggle').on('hidden.bs.modal', (e) => {
           this.router.navigate(['/card']);
