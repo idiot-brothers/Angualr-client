@@ -12,7 +12,6 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{}] },
     plugins: {
       datalabels: {
@@ -85,11 +84,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private moneyService: MoneyService) { }
 
   ngOnInit() {
-    $('body').css("background-color", "#f7f7f7");
     // $(document).ready(function () {
-    $("#sidebar").mCustomScrollbar({
-      theme: "minimal"
-    });
+    // $("#sidebar").mCustomScrollbar({
+    //   theme: "minimal"
+    // });
 
     $('#sidebarbtn').on('click', function () {
       $('#sidebar, #content').toggleClass('active');
