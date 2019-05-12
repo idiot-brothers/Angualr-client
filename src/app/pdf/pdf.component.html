@@ -20,7 +20,7 @@
       </div>
     </nav>
 
-    <form class="mt-3">
+    <!-- <form class="mt-3">
       <fieldset>
         <div class="form-group mb-5">
           <select class="browser-default custom-select">
@@ -33,16 +33,18 @@
 
         </div>
       </fieldset>
-    </form>
+    </form> -->
 
-    <div class="row">
+    <div class="row p-3" style="margin-top:580px;">
       <div class="col-6 text-left">
         <button [routerLink]="['/home']" type="button" class="btn btn-blue-grey w-100">CANCLE</button>
       </div>
       <div class="col-6 text-right">
-        <button type="button" class="btn btn-cyan w-100">SET</button>
+        <button type="button" (click)="getPdf()" class="btn btn-cyan w-100">SET</button>
       </div>
     </div>
 
   </div>
 </div>
+
+<ngx-ui-loader></ngx-ui-loader>

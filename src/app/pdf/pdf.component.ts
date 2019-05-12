@@ -13,8 +13,20 @@ import { Router } from '@angular/router';
 export class PdfComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private ngxService: NgxUiLoaderService) { }
-
+  link: string;
   ngOnInit() {
+  }
+
+  getPdf() {
+    this.ngxService.start()
+    this.http.get(`${environment.server.url}/api/users/deposits/pdf`)
+      .pipe(
+        finalize(() => this.ngxService.stop())
+      )
+      .subscribe((ret: any) => {
+        console.log('ret', ret);
+        window.open(ret.url);
+      });
   }
 
 }
