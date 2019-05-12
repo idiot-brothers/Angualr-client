@@ -68,8 +68,7 @@ export class AuthComponent implements OnInit {
         finalize(() => this.ngxService.stop())
       )
       .subscribe(ret => {
-        console.log("sendCode()", ret);
-        console.log("param ", param);
+        $("#centralModalInfo").modal('toggle')
       });
 
   }

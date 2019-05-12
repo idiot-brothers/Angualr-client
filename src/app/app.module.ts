@@ -20,6 +20,8 @@ import { BankComponent } from './bank/bank.component';
 import { CardComponent } from './card/card.component';
 
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER } from 'ngx-ui-loader';
+import { DepositsComponent } from './deposits/deposits.component';
+
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsType: SPINNER.fadingCircle,
   fgsColor: "#fff",
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'pdf', component: PdfComponent, canActivate: [AuthGuard] },
   { path: 'bank', component: BankComponent, canActivate: [AuthGuard] },
   { path: 'card', component: CardComponent, canActivate: [AuthGuard] },
+  { path: 'deposits/:userId', component: DepositsComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
 
   // { path: 'hero/:id',      component: HeroDetailComponent },
@@ -62,7 +65,8 @@ export function tokenGetter() {
     GoalComponent,
     PdfComponent,
     BankComponent,
-    CardComponent
+    CardComponent,
+    DepositsComponent
   ],
   imports: [
     RouterModule.forRoot(
